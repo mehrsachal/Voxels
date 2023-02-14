@@ -55,5 +55,6 @@ def plot_blocks():
     ax.set_ylabel('Y')
     ax.set_zlabel('Z')
 
+
     # Show the plot
     plt.show()

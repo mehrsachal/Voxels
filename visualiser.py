@@ -4,6 +4,13 @@ from mpl_toolkits.mplot3d import Axes3D
 import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d.art3d import Poly3DCollection
 
+import matplotlib.colors as mcolors
+
+colors = list(mcolors.TABLEAU_COLORS.values()) + \
+         list(mcolors.CSS4_COLORS.values())[::4] + \
+         list(mcolors.XKCD_COLORS.values())[::4]
+
+unique_colors = np.array(colors)[:20]
 
 
 def plot_voxel():
@@ -35,7 +42,9 @@ def plot_voxel():
                     face4 = [(x+1, y, z), (x+1, y, z+1), (x+1, y+1, z+1), (x+1, y+1, z)]
                     face5 = [(x, y+1, z), (x, y+1, z+1), (x+1, y+1, z+1), (x+1, y+1, z)]
                     face6 = [(x, y, z+1), (x+1, y, z+1), (x+1, y+1, z+1), (x, y+1, z+1)]
-                    ax.add_collection3d(Poly3DCollection([face1, face2, face3, face4, face5, face6], alpha=1, facecolor='blue'))
+                    ax.add_collection3d(Poly3DCollection([face1, face2, face3, face4, face5, face6], alpha=1, facecolor=unique_colors[k]))
+                    
+                    
 
     # Set the plot limits and labels
     ax.set_xlim([-0.5, o-0.5])
