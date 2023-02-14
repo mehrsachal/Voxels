@@ -1,9 +1,7 @@
 import openpyxl
 import numpy as np
-
 from mpl_toolkits.mplot3d import Axes3D
 import matplotlib.pyplot as plt
-from matplotlib.patches import Rectangle
 from mpl_toolkits.mplot3d.art3d import Poly3DCollection
 
 def plot_blocks():
@@ -22,7 +20,7 @@ def plot_blocks():
     n, m, o = (x_max - x_min + size_x), (y_max - y_min + size_y), (z_max - z_min + size_z)
 
     # Create a 3D plot of the block data
-    fig = plt.figure()
+    fig = plt.figure('OPIM')
     ax = fig.add_subplot(111, projection='3d')
     for i in range(block_data.shape[0]):
         x, y, z, size_x, size_y, size_z = block_data[i,:]
@@ -36,8 +34,7 @@ def plot_blocks():
             [x+size_x, y+size_y, z+size_z],
             [x, y+size_y, z+size_z],
         ])
-        faces = [
-            [vertices[0], vertices[1], vertices[2], vertices[3]],
+        faces = [            [vertices[0], vertices[1], vertices[2], vertices[3]],
             [vertices[0], vertices[1], vertices[5], vertices[4]],
             [vertices[1], vertices[2], vertices[6], vertices[5]],
             [vertices[2], vertices[3], vertices[7], vertices[6]],
