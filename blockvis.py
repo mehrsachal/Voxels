@@ -5,7 +5,9 @@ from mpl_toolkits.mplot3d import Axes3D
 import matplotlib.pyplot as plt
 from matplotlib.patches import Rectangle
 from mpl_toolkits.mplot3d.art3d import Poly3DCollection
+from numba import cuda
 
+@cuda.jit
 def plot_blocks():
     # Load the block data from the Excel file
     wb = openpyxl.load_workbook('blocks.xlsx')
@@ -57,3 +59,4 @@ def plot_blocks():
 
     # Show the plot
     plt.show()
+
