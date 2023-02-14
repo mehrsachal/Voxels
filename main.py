@@ -1,21 +1,17 @@
 import pyramidgen
 import visualiser
 import blockvis
-import optblockvis
-import openfaces
 import listopenfaces
+import doublebench
 
 pyramidgen.genpyr(2)
 voxel_array=visualiser.plot_voxel()
-# open_faces = openfaces.list_voxel_faces(voxel_array)
-# print(len(open_faces))
-# print(open_faces)
+print(voxel_array)
 
 faces, open_face_count =listopenfaces.list_voxel_faces(voxel_array)
-
-print("Faces:", faces)
+print(len(faces))
 print("Open face count:", open_face_count)
 
-
-#blockvis.plot_blocks()
-#optblockvis.plot_blocks()
+n_on_top=doublebench.get_voxels_with_neighbor_on_top(voxel_array)
+print("Voxels with neighbor on top:")
+print(n_on_top)

@@ -58,3 +58,4 @@ def plot_blocks():
 
     # Show the plot
     plt.show()
+    return block_data
