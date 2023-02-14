@@ -4,9 +4,10 @@ import blockvis
 import optblockvis
 import openfaces
 
-pyramidgen.genpyr(3)
+pyramidgen.genpyr(2)
 pr=visualiser.plot_voxel()
-pt = openfaces.find_open_faces(pr)
-print(pt)
+pt = openfaces.list_voxel_faces(pr)
+print(len(pt))
+
 #blockvis.plot_blocks()
 #optblockvis.plot_blocks()

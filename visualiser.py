@@ -54,9 +54,9 @@ def plot_voxel():
     ax.set_ylabel('Y')
     ax.set_zlabel('Z')
     ax.invert_yaxis()
-
+    
     # Show the plot
-    #plt.show()
+    plt.show()
     return voxel_data
     
     
