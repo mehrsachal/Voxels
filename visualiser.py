@@ -56,7 +56,10 @@ def plot_voxel():
     ax.invert_yaxis()
 
     # Show the plot
-    plt.show()
+    #plt.show()
+    return voxel_data
+    
+    
 
         
 
