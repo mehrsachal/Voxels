@@ -3,15 +3,24 @@ import visualiser
 import blockvis
 import listopenfaces
 import doublebench
+import utilityvox
+import numpy as np
+import blockopenfaces
 
-pyramidgen.genpyr(2)
-voxel_array=visualiser.plot_voxel()
-print(voxel_array)
+# pyramidgen.genpyr(2)
+# voxel_array=visualiser.plot_voxel()
+# faces, openfacecount = listopenfaces.list_voxel_faces(voxel_array)
+# print (len(faces))
 
-faces, open_face_count =listopenfaces.list_voxel_faces(voxel_array)
-print(len(faces))
-print("Open face count:", open_face_count)
+voxel_array=blockvis.plot_blocks()
+faces, openfacecount = blockopenfaces.list_voxel_faces(voxel_array)
+print (len(faces))
 
-n_on_top=doublebench.get_voxels_with_neighbor_on_top(voxel_array)
-print("Voxels with neighbor on top:")
-print(n_on_top)
+
+
+# nextbatch = utilityvox.remove_voxel(voxel_array, n_on_top)
+
+
+
+        
+        
