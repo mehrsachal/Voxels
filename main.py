@@ -67,6 +67,9 @@ while len(coordinates)>0:
 
 cleaned_list = [tuple(x.tolist()) for x in path]
 
-print(cleaned_list)
+#print(cleaned_list)
+coordinates, sizes = newapp.excel_to_arrays(file_name)
 
+colors = blockvis.generate_color_list(len(cleaned_list))
+blockvis.voxelvis(cleaned_list, sizes,colors)
 
