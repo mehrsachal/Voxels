@@ -10,13 +10,12 @@ path=[]
 
 
 while len(coordinates)>0:
+
+    #CREATES A MASK TO REMOVE ALL BLOCKS THAT ARE NOT MINEABLE
     mask = np.ones(len(coordinates), dtype=bool)
-
-
-
-    #blockvis.blockvis(coordinates, sizes)
+    #IDENTIFIES NEIGHBORS
     neighbors = nfinder.count_neighbors(coordinates, sizes)
-
+    #CHECK NEIGHBORS FOR DOUBLE BENCHERS
     #identifies double benchers
     for i in range(len(coordinates)):
         for j in range(len(neighbors[i])):
@@ -34,21 +33,40 @@ while len(coordinates)>0:
             if (val == coordinates[c]).all():
                 mask[i] = False
 
-    coordinates = coordinates[mask]
-    sizes = sizes[mask]
-    openf = []
-    open_faces = nfinder.open_faces(coordinates, sizes)
-    for i in range(len(coordinates)):
-        openf.append(5-len(open_faces[i]))
+    newcoord = coordinates[mask]
+    newsize = sizes[mask]
 
-    # DATA CLEANED & UPDATED TO SHOW ONLY MINEABLE BLOCKS.
-    mask = np.ones(len(openf), dtype=bool)
+    #REMOVED!!!!!!!!!!!!!
+    
+
+
+    #FINDS OPEN FACES
+    openf = []
+    open_faces = nfinder.open_faces(newcoord, newsize)
+    for i in range(len(newcoord)):
+        openf.append(5-len(open_faces[i]))
+    
+
 
     max_value = np.max(openf)
     max_indices = np.where(openf == max_value)[0]
     random_index = np.random.choice(max_indices)
-    mask[random_index] = False
+    path.append(newcoord[random_index])
+    
 
-    path.append(coordinates[random_index])
+    for i in range(len(coordinates)):
+        if (coordinates[i] == newcoord[random_index]).all():
+            random_index = i
+            break
+    coordinates = np.delete(coordinates, random_index, 0)
+    sizes = np.delete(sizes, random_index, 0)
+    
+    
+    
 
-print(path)
+
+cleaned_list = [tuple(x.tolist()) for x in path]
+
+print(cleaned_list)
+
+
